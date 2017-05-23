@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ThisIsSoKyang</title>
+
+    <!-- CSS Base -->
+     <link rel="stylesheet" type='text/css' media='all' href="css/base.css"> 
+    <!-- CSS Colors -->
+     <link rel="stylesheet" type='text/css' media='all' href="css/colors.css"> 
+    <!-- Optional - CSS SVG Icons (Font Awesome) -->
+     <link rel="stylesheet" type='text/css' media='all' href="css/svg-icons.css"> 
+
+</head>
+<body>
+	<main role="main">
+		<article id="webslides" class="vertical">
+<section class="bg-black aligncenter">
+
+<div class="wrap fadeInUp" id="sec1">
+	<div class="content-left">
+		<input type="radio" name="option" value="橋頭" checked>橋頭<br>
+		<input type="radio" name="option" value="少女">少女<br>
+		<input type="radio" name="option" value="深夜">深夜<br>
+		<select name="test" class="opts" id="myselect">
+			<option selected value=1>Y.C.Shu</option>
+			<option value=2>C.C.Liu</option>
+			<option value=3>Andy Lee</option>
+<!-- 因為編碼沒調整好慌張之下改了一整票英文 -->
+		</select>
+		名言一：<input id="quote_input1" value="不知道為什麼？, 何必問為什麼？"> <br>
+		名言二：<input id="quote_input2" value="Dunno why?, Why ask why?"> <br>
+		名言三：<input id="quote_input3" value="節錄自《下一站，與你》, Excerpted from -Next Station With You-"> <br>
+		<button type="button" id="mybutton" onclick=showopt()>RUN起來</button>
+		<button type="button" id="9487" onclick=history.go(0)>讓人生重來</button>
+	</div>
+</div>
+<div id="sec2">
+	<span id="teacher" class="background-right-bottom" style="background-image:url('images/ycshu.png'); z-index:5;"></span>
+	<span id="bgimage" class="background light" style="background-image:url('images/Gangshan.jpg');"></span>
+	<div class="wrap fadeInUp">
+		<div class="content-left">
+			<blockquote>
+				<h3 id="quote_line1">"不知道為什麼？<br>何必問為什麼？"</h3>
+				<p id="author1"><cite>節錄自《下一站，與你》</cite></p>
+			</blockquote>
+			<blockquote>
+				<h3 id="quote_line2">Dunno why?<br>Why ask why?</h3>
+				<p id="author2"><cite>Excerpted from -Next Station With You-</cite></p>
+			</blockquote>
+		</div>
+	</div>
+</div>
+</section>
+		</article>
+	</main>
+
+<script src="js/webslides.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/html2canvas.js"></script>
+<script>
+	const ws = new WebSlides();
+	//
+	$( "#sec2" ).hide();
+
+function showopt() {
+
+	var x;
+	x = document.getElementById("quote_input1").value;
+	x = x.split(',');
+	x = x.join('<br>');
+	document.getElementById("quote_line1").innerHTML = x;
+	x = document.getElementById("quote_input2").value;
+	x = x.split(',');
+	x = x.join('<br>');
+	document.getElementById("quote_line2").innerHTML = x;
+	x = document.getElementById("quote_input3").value;
+	x = x.split(',');
+	document.getElementById("author1").innerHTML = "<cite>" + x[0] + "</cite>";
+
+	var teacher_no = document.getElementById("myselect").value;
+	if(teacher_no == 1) {
+		document.getElementById("teacher").style = "background-image:url('images/ycshu.png'); z-index:5;";
+	} else if (teacher_no == 2) {
+		document.getElementById("teacher").style = "background-image:url('images/ccliu.png'); z-index:5;";
+	} else if (teacher_no == 3) {
+		document.getElementById("teacher").style = "background-image:url('images/andylee.png'); z-index:5;";
+	}
+
+	var y = document.getElementsByName("option");
+	for(var i=0; i<y.length; ++i) {
+		if(y[i].checked) {
+			document.getElementById("author2").innerHTML = "<cite>" + x[1] + "</cite>";
+			if(i==1) {
+				document.getElementById("bgimage").style = "background-image:url('images/KRTGirls.jpg');";
+			} else if (i==2) {
+				document.getElementById("bgimage").style = "background-image:url('images/NightZXN.jpg');";
+			} else {
+				document.getElementById("bgimage").style = "background-image:url('images/Gangshan.jpg');";
+			}
+		}
+	}
+	$( "#sec1" ).hide();
+	$( "#sec2" ).show();
+}
+</script>
+</body>
+</html>
